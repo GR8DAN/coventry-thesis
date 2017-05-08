@@ -20,3 +20,4 @@ Ideas, suggestions and changes welcome.
 * Added a Coventry University front page logo.
 * Replaced the copyrighted example images with public domain clip art from [openclipart.org](https://openclipart.org "openclipart.org".)
 * Removed build files not required by ShareLaTeX (can be obtained from the CUED template).
+* Added more tutorial text as an introduction to the template, how to use it and pointers to further help, especially for those new to LaTeX.

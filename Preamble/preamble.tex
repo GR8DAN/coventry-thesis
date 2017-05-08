@@ -1,7 +1,7 @@
 % ******************************************************************************
 % ****************************** Custom Margin *********************************
 
-% Add `custommargin' in the document class options to use this section
+% Add 'custommargin' in the document class options to use this section
 % Set {innerside margin / outerside margin / topmargin / bottom margin}  and
 % other page dimensions
 \ifsetCustomMargin
@@ -20,10 +20,10 @@
 % *****************************************************************************
 % ******************* Fonts (like different typewriter fonts etc.)*************
 
-% Add `customfont' in the document class option to use this section
+% Add 'customfont' in the document class option to use this section
 
 \ifsetCustomFont
-  % Set your custom font here and use `customfont' in options. Leave empty to
+  % Set your custom font here and use 'customfont' in options. Leave empty to
   % load computer modern font (default LaTeX font).
   %\RequirePackage{helvet}
 
@@ -115,16 +115,18 @@
 \ifuseCustomBib
    \RequirePackage[square, sort, numbers, authoryear]{natbib} % CustomBib
 
-% If you would like to use biblatex for your reference management, as opposed to the default `natbibpackage` pass the option `custombib` in the document class. Comment out the previous line to make sure you don't load the natbib package. Uncomment the following lines and specify the location of references.bib file
+% If you would like to use biblatex for your reference management, as opposed to
+% the default 'natbibpackage' pass the option 'custombib' in the document class.
+% Comment out the previous line to make sure you don't load the natbib package.
+% Uncomment the following lines and specify the location of references.bib file.
 
 %\RequirePackage[backend=biber, style=numeric-comp, citestyle=numeric, sorting=nty, natbib=true]{biblatex}
 %\bibliography{References/references} %Location of references.bib only for biblatex
 
 \fi
 
-% changes the default name `Bibliography` -> `References'
+% changes the default name 'Bibliography' -> 'References'
 \renewcommand{\bibname}{References}
-
 
 % ******************************************************************************
 % ************************* User Defined Commands ******************************
@@ -142,13 +144,11 @@
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{2}
 
-
 % ******************************* Nomenclature *********************************
 
 % To change the name of the Nomenclature section, uncomment the following line
 
 %\renewcommand{\nomname}{Symbols}
-
 
 % ********************************* Appendix ***********************************
 
@@ -159,8 +159,8 @@
 
 % *********************** Configure Draft Mode **********************************
 
-% Uncomment to disable figures in `draft'
-%\setkeys{Gin}{draft=true}  % set draft to false to enable figures in `draft'
+% Uncomment to disable figures in 'draft'
+%\setkeys{Gin}{draft=true}  % set draft to false to enable figures in 'draft'
 
 % These options are active only during the draft mode
 % Default text is "Draft"
@@ -175,7 +175,6 @@
 % Draft Text grayscale value (should be between 0-black and 1-white)
 % Default value is 0.75
 %\SetDraftGrayScale{0.8}
-
 
 % ******************************** Todo Notes **********************************
 %% Uncomment the following lines to have todonotes.
