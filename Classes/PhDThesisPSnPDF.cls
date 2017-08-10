@@ -1,18 +1,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                            %%
-%% Class ``PhD Thesis PSnPDF''                                                %%
+%% Class ''PhD Thesis PSnPDF''                                                %%
 %%                                                                            %%
 %% A PhD thesis LaTeX template for Coventry University                        %%
 %%                                                                            %%
-%% Version: v2.2.2                                                            %%
+%% Version: v2.3.1                                                             %%
 %% Authors: Krishna Kumar                                                     %%
 %% License: MIT License (c) 2016 Krishna Kumar                                %%
 %% GitHub Repo: https://github.com/kks32/phd-thesis-template/                 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ************************** Class Identification ******************************
-\newcommand\fileversion{2.2.2}
-\newcommand\filedate{2016/10/20}
+\newcommand\fileversion{2.3.1}
+\newcommand\filedate{2016/04/23}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{PhDThesisPSnPDF}[\filedate\space A PhD thesis class file
  by Krishna Kumar (v\fileversion)]
@@ -26,10 +26,6 @@
 % *********************** Define a Print/Online Version ************************
 \newif\if@print\@printfalse
 \DeclareOption{print}{\@printtrue}
-
-% ****************************** Draft Option **********************************
-\newif\ifsetDraft\setDraftfalse
-\newif\ifsetDraftClassic\setDraftClassicfalse
 
 % ****************************** Define index **********************************
 \newif\ifPHD@index\PHD@indexfalse
@@ -157,7 +153,7 @@
   \ClassWarning{PhDThesisPSnPDF}{You have chosen an option that generates only
     the Title page and an abstract with PhD title and author name, if this was
     intentional, ignore this warning. Congratulations on submitting your thesis!
-    If not, please remove the option `abstract' from the document class and
+    If not, please remove the option 'abstract' from the document class and
     recompile. Good luck with your writing!}
   \PassOptionsToClass{oneside}{book}
 }
@@ -170,26 +166,19 @@
   \PHD@chaptertrue
   \ClassWarning{PhDThesisPSnPDF}{You have chosen an option that generates only 
     selected chapters with references, if this was intentional, ignore this
-    warning. If not, please remove the option `chapter' from the document class
+    warning. If not, please remove the option 'chapter' from the document class
     and recompile. Good luck with your writing!}
 }
 
-\ProcessOptions\relax%
-
 % *************************** Pre-defined Options ******************************
-
 % Font Size
-\newcommand\PHD@ptsize{12pt} %Set Default Size as 12
-
 \DeclareOption{10pt}{
   \ClassWarning{PhDThesisPSnPDF}{The Coventry University PhD thesis guidelines
 recommend using a minimum font size of 10pt.}
-  \renewcommand\PHD@ptsize{10pt}
+  \PassOptionsToClass{10pt}{book}%
 }
-\DeclareOption{11pt}{\renewcommand\PHD@ptsize{11pt}}%
-\DeclareOption{12pt}{\renewcommand\PHD@ptsize{12pt}}%
-\PassOptionsToClass{\PHD@ptsize}{book}%
-\message{PhDThesisPSnPDF: Font size is set as \PHD@ptsize}
+\DeclareOption{11pt}{\PassOptionsToClass{11pt}{book}}%
+\DeclareOption{12pt}{\PassOptionsToClass{12pt}{book}}%
 
 % Page Size, Coventry University Academic Regulations for Higher Degrees requires A4 paper
 \newcommand\PHD@papersize{a4paper} % Set Default as a4paper
@@ -210,22 +199,24 @@ recommend using a minimum font size of 10pt.}
 \DeclareOption{oneside}{\PassOptionsToClass{\CurrentOption}{book}\@onesidetrue}%
 \DeclareOption{twoside}{\PassOptionsToClass{\CurrentOption}{book}}%
 
+% ****************************** Draft Option **********************************
+\newif\ifsetDraft\setDraftfalse
+\newif\ifsetDraftClassic\setDraftClassicfalse
 % Draft Mode
-
 \DeclareOption{draftclassic}{\PassOptionsToClass{draft}{book}
   \setDraftClassictrue
   \ClassWarning{PhDThesisPSnPDF}{Draft is ON. Don't forget to turn it
     off in your final version. This is the classic version of draft.
-    Use `draft' for enhanced mode, which adds watermark with timestamp, 
+    Use 'draft' for enhanced mode, which adds watermark with timestamp, 
     line numbering, and version number.}}%
 
 \DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{book}
   \setDrafttrue 
   \ClassWarning{PhDThesisPSnPDF}{Draft is ON. Don't forget to turn it
-    off in your final version. This enhanced `draft' mode adds watermark 
-    with timestamp, line numbering, and version number. Use `draftclassic'
+    off in your final version. This enhanced 'draft' mode adds watermark 
+    with timestamp, line numbering, and version number. Use 'draftclassic'
     if you prefer the \cite{} lassic draft mode. To tweak options see
-    `preamble.tex'}}%
+    'preamble.tex'}}%
 
 
 % Line Numbers
@@ -238,29 +229,14 @@ recommend using a minimum font size of 10pt.}
 \DeclareOption*{
   \ClassWarning{PhDThesisPSnPDF}{Unknown or non-standard option
 '\CurrentOption'. I'll see if I can load it from the book class. If you get a
-warning unused global option(s): `\CurrentOption` then the option is not
+warning unused global option(s): '\CurrentOption' then the option is not
 supported!}
   \PassOptionsToClass{\CurrentOption}{book}
 }
 
-% Determine whether to run pdftex or dvips
+% Process options and load class
 \ProcessOptions\relax%
-\newif\ifsetDVI\setDVIfalse
-\ifx\pdfoutput\undefined
-  % we are not running PDFLaTeX
-  \setDVItrue
-  \LoadClass[dvips,fleqn,openright]{book}%
-\else % we are running PDFLaTeX
-  \ifnum \pdfoutput>0
-    %PDF-Output
-    \setDVIfalse
-    \LoadClass[pdftex,fleqn,openright]{book}%
-  \else
-    %DVI-output
-    \setDVItrue
-    \LoadClass[fleqn,openright]{book}%
-  \fi
-\fi
+\LoadClass{book}%
 
 % ******************************************************************************
 % ******************************** Packages ************************************
@@ -342,13 +318,13 @@ supported!}
 
 % Classic Draft Mode
 \ifsetDraftClassic
-% Disable figures in `draft'\
+% Disable figures in 'draft'\
 \setkeys{Gin}{draft=true}
 \fi
 
 % If Draft Mode is active
 \ifsetDraft
-% Disable figures in `draft'\
+% Disable figures in 'draft'\
 \setkeys{Gin}{draft=false}
 
 % Line numbering (can be switched off)
@@ -466,19 +442,19 @@ supported!}
 \else 
 
 \renewcommand\SetDraftText[1]{\ClassWarning{PhDThesisPSnPDF}{Draft is
-    inactive, to use SetDraftText include `draft' in the document 
+    inactive, to use SetDraftText include 'draft' in the document 
     class options.}}
 % Draft Version
 \renewcommand\SetDraftVersion[1]{\ClassWarning{PhDThesisPSnPDF}{Draft is
-    inactive, to use SetDraftVersion include `draft' in the document
+    inactive, to use SetDraftVersion include 'draft' in the document
     class options.}}
 % Draft Content
 \renewcommand\SetDraftWMPosition[1]{\ClassWarning{PhDThesisPSnPDF}{Draft
-    is inactive, to use SetDraftWMPosition include `draft' in the document
+    is inactive, to use SetDraftWMPosition include 'draft' in the document
     class options.}}
 
 \renewcommand\SetDraftGrayScale[1]{\ClassWarning{PhDThesisPSnPDF}{Draft is
-    inactive, to use SetDraftWMPosition include `draft' in the document
+    inactive, to use SetDraftWMPosition include 'draft' in the document
     class options.}}
 \fi
 
@@ -531,8 +507,8 @@ supported!}
 \else
 \ClassWarning{PhDThesisPSnPDF}{No bibliography style was specified.
   Default numbered style is used. If you would like to use a 
-  different style, use `authoryear' or `numbered' in the options in
-  documentclass or use `custombib` and define the natbib package or
+  different style, use 'authoryear' or 'numbered' in the options in
+  documentclass or use 'custombib' and define the natbib package or
   biblatex package with required style in the Preamble.tex file}
 \fi
 
@@ -621,14 +597,7 @@ supported!}
 % Moved below other usepackage definitions to fix PDFLaTeX footnote warning
 % Based on the suggestion by John Plaice
 
-\ifsetDVI
-  \special{papersize=\the\paperwidth,\the\paperheight}
-  \RequirePackage[unicode=true]{hyperref}  % extra option dvips
-\else
-  \RequirePackage[unicode=true]{hyperref}
-  \pdfpagewidth=\the\paperwidth
-  \pdfpageheight=\the\paperheight
-\fi
+\RequirePackage[unicode=true]{hyperref}
 
 \if@print
   % For Print version
@@ -651,14 +620,8 @@ supported!}
   \ifsetCustomMargin
   % Margin to be define in preamble using geometry package
   \else
-    \ifsetDVI
-      % Odd and Even side Margin for binding and set viewmode for PDF
-      \RequirePackage[dvips,paper=\PHD@papersize,hmarginratio=1:1,
-        vmarginratio=1:1,scale=0.75,bindingoffset=5mm]{geometry}
-    \else
-      \RequirePackage[pdftex,paper=\PHD@papersize,hmarginratio=1:1,
-        vmarginratio=1:1,scale=0.75,bindingoffset=5mm]{geometry}
-    \fi
+    \RequirePackage[paper=\PHD@papersize,hmarginratio=1:1,
+      vmarginratio=1:1,scale=0.75,bindingoffset=5mm]{geometry}
   \fi
 
   \if@twoside
@@ -690,23 +653,10 @@ supported!}
     % Margin to be define in preamble using geometry package
     \else
       % No Margin staggering on Odd and Even side
-      \ifsetDVI
-        \RequirePackage[paper=\PHD@papersize,hmarginratio=1:1,
-          vmarginratio=1:1,scale=0.75]{geometry} % dvips
-      \else
-        \RequirePackage[pdftex,paper=\PHD@papersize,hmarginratio=1:1,
-          vmarginratio=1:1,scale=0.75]{geometry}
-      \fi
+      \RequirePackage[paper=\PHD@papersize,hmarginratio=1:1,
+        vmarginratio=1:1,scale=0.75]{geometry} % dvips
     \fi
-
     \hypersetup{pdfpagelayout=OneColumn}
-\fi
-
-% Backward compatibility - setMargin is now replaced with customMargin
-\ifsetCustomMargin
-  \setMarginfalse
-\else
-  \setMargintrue
 \fi
 
 % ************************ URL Package and Definition **************************
@@ -718,15 +668,13 @@ supported!}
 \urlstyle{leo}
 
 % option to split urls over multiple lines for latex >> DVIPS >> PDF option
-% PDFLaTeX does it automatically.
-
-\ifxetex % XeTeX doesn't require breakurl only dvi requires break url
+\ifpdf
+  % PDFLaTeX does it automatically.
 \else
-  \ifsetDVI
-    \RequirePackage{breakurl} % to split the url over multiple lines
-  \fi
-\fi  
-
+  % dvips
+  \RequirePackage{breakurl} % to split the url over multiple lines
+\fi
+  
 % ******************************************************************************
 % **************************** Pre-defined Settings ****************************
 % ******************************************************************************
@@ -755,7 +703,7 @@ supported!}
 % Left aligned as per University identity guidelines
 \ifPHD@textJustify
 \message{PhDThesisPSnPDF: The University identity guidelines recommend using 
-left aligned text. Please use `flushleft' in the documentclass option, if you
+left aligned text. Please use 'flushleft' in the documentclass option, if you
 wish to left align your text}
 \else
 \AtBeginDocument{
@@ -779,43 +727,53 @@ wish to left align your text}
 
 \RequirePackage{fancyhdr} % Define custom header
 
+% Style 1: Sets Page Number at the Top and Chapter/Section Name on LE/RO
+\fancypagestyle{PageStyleI}{
+  \renewcommand{\chaptermark}[1]{\markboth{##1}{}}
+  \renewcommand{\sectionmark}[1]{\markright{\thesection\ ##1\ }}
+  \fancyhf{}
+  \fancyhead[RO]{\nouppercase \rightmark\hspace{0.25em} | 
+    \hspace{0.25em} \bfseries{\thepage}}
+  \fancyhead[LE]{ {\bfseries\thepage} \hspace{0.25em} | 
+    \hspace{0.25em} \nouppercase \leftmark}
+}
+
+% Style 2: Sets Page Number at the Bottom with Chapter/Section Name on LO/RE
+\fancypagestyle{PageStyleII}{
+  \renewcommand{\chaptermark}[1]{\markboth{##1}{}}
+  \renewcommand{\sectionmark}[1]{\markright{\thesection\ ##1}}
+  \fancyhf{}
+  \fancyhead[RO]{\bfseries\nouppercase \rightmark}
+  \fancyhead[LE]{\bfseries \nouppercase \leftmark}
+  \fancyfoot[C]{\thepage}
+}
+
+
 % Set Fancy Header Command is defined to Load FancyHdr after Geometry is defined
 \newcommand{\setFancyHdr}{
 
 \pagestyle{fancy}
+
 \ifPHD@pageStyleI
-% Style 1: Sets Page Number at the Top and Chapter/Section Name on LE/RO
-\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ ##1\ }}
-\fancyhf{}
-\fancyhead[RO]{\nouppercase \rightmark\hspace{0.25em} | 
-  \hspace{0.25em} \bfseries{\thepage}}
-\fancyhead[LE]{ {\bfseries\thepage} \hspace{0.25em} | 
-  \hspace{0.25em} \nouppercase \leftmark}
-
+  % Style 1: Sets Page Number at the Top and Chapter/Section Name on LE/RO
+  \pagestyle{PageStyleI}
 
 \else
-\ifPHD@pageStyleII
-% Style 2: Sets Page Number at the Bottom with Chapter/Section Name on LO/RE
-\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ ##1}}
-\fancyhf{}
-\fancyhead[RO]{\bfseries\nouppercase \rightmark}
-\fancyhead[LE]{\bfseries \nouppercase \leftmark}
-\fancyfoot[C]{\thepage}
+  \ifPHD@pageStyleII
 
+  % Style 2: Sets Page Number at the Bottom with Chapter/Section Name on LO/RE
+  \pagestyle{PageStyleII}
 
-\else
-% Default Style: Sets Page Number at the Top (LE/RO) with Chapter/Section Name
-% on LO/RE and an empty footer
-\renewcommand{\chaptermark}[1]{\markboth {##1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ ##1}}
-\fancyhf{}
-\fancyhead[LO]{\nouppercase \rightmark}
-\fancyhead[LE,RO]{\bfseries\thepage}
-\fancyhead[RE]{\nouppercase \leftmark}
-\fi
-
+  \else
+  % Default Style: Sets Page Number at the Top (LE/RO) with Chapter/Section Name
+  % on LO/RE and an empty footer
+    \renewcommand{\chaptermark}[1]{\markboth {##1}{}}
+    \renewcommand{\sectionmark}[1]{\markright{\thesection\ ##1}}
+    \fancyhf{}
+    \fancyhead[LO]{\nouppercase \rightmark}
+    \fancyhead[LE,RO]{\bfseries\thepage}
+    \fancyhead[RE]{\nouppercase \leftmark}
+  \fi
 \fi
 }
 
@@ -832,7 +790,7 @@ wish to left align your text}
 \AtBeginDocument{
 \@ifpackageloaded{geometry}{}{\ClassWarning{PhDThesisPSnPDF}{%
   Custom margin is chosen, but geometry package is not loaded. Please load the
-  `geometry' package in the preamble.}}}
+  'geometry' package in the preamble.}}}
 \else
 \setFancyHdr % Apply fancy header settings otherwise apply it in preamble
 \fi
@@ -888,6 +846,10 @@ wish to left align your text}
 \newcommand{\@supervisorrole}{Supervisor: }
 \newcommand{\supervisorrole}[1]{\renewcommand{\@supervisorrole}{#1}}
 
+% Supervisor width to align
+\newcommand{\@supervisorlinewidth}{0.35\textwidth}
+\newcommand{\supervisorlinewidth}[1]{\renewcommand{\@supervisorlinewidth}{#1}}
+
 % Advisor
 \newif\ifPHD@advisor\PHD@advisorfalse
 \newcommand{\@advisor}{}
@@ -897,16 +859,20 @@ wish to left align your text}
 \newcommand{\@advisorrole}{Advisor: }
 \newcommand{\advisorrole}[1]{\renewcommand{\@advisorrole}{#1}}
 
+% Advisor width to align
+\newcommand{\@advisorlinewidth}{0.25\textwidth}
+\newcommand{\advisorlinewidth}[1]{\renewcommand{\@advisorlinewidth}{#1}}
+
 % Submission Text
 \newcommand{\submissiontext}{This dissertation is submitted for the degree of }
 
 % keywords (These keywords will appear in the PDF meta-information
-% called `pdfkeywords`.)
+% called 'pdfkeywords'.)
 \newcommand{\@keywords}{}
 \newcommand{\keywords}[1]{\renewcommand{\@keywords}{#1}}
 
 % subjectline (This subject will appear in the PDF meta-information
-% called `pdfsubject`.)
+% called 'pdfsubject'.)
 \newcommand{\@subject}{}
 \newcommand{\subject}[1]{\renewcommand{\@subject}{#1}}
 
@@ -1171,7 +1137,12 @@ wish to left align your text}
     \ifthenelse{\equal{\@supervisor}{}}{
       % supervisor is not defined
     }{
-      \centering \Large {\@supervisorrole \@supervisor}
+      \begin{center}
+        \makebox[\widthof{supervisorrole} + \@supervisorlinewidth][c]{
+          \Large
+          \@supervisorrole \parbox[t]{\@supervisorlinewidth}{\@supervisor}
+        }
+      \end{center}
       \vspace{0.5em}
     } % supervisor is defined
   \end{minipage}
@@ -1184,7 +1155,12 @@ wish to left align your text}
     \ifthenelse{\equal{\@advisor}{}}{
       % advisor is not defined
     }{
-      \centering \Large {\@advisorrole \@advisor}
+      \begin{center}
+        \makebox[\widthof{advisorrole} + \@advisorlinewidth][c]{
+          \Large
+          \@advisorrole \parbox[t]{\@advisorlinewidth}{\@advisor}
+        }
+      \end{center}
       \vspace{0.5em}
     } % advisor is defined
   \end{minipage}
