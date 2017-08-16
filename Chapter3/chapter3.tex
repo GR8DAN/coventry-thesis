@@ -25,7 +25,7 @@ Ut ultrices lectus sed sagittis varius. Nulla facilisi. Nullam tortor sem, place
 
 \section{Examples of Lists}
 
-How do you put a list in a \LaTeX{} document? Use \textit{enumerate}, \textit{itemize}, or \textit{description}.
+How do you put a list in a \LaTeX{} document? Use \emph{enumerate}, \emph{itemize}, or \emph{description}.
 
 \section*{Enumeration}
 \begin{enumerate}
@@ -62,7 +62,7 @@ How do you put a list in a \LaTeX{} document? Use \textit{enumerate}, \textit{it
 
 \section[Short title]{Reasonably long section title}
 
-Notice how the section title in the index has been replaced by an alternative. Now I'm going to randomly include a picture Figure~\ref{fig:placeholder}.
+Notice how the section title in the index has been replaced by an alternative. Now I'm going to randomly include a picture, Figure~\ref{fig:placeholder}.
 
 \begin{figure}[htbp!] 
 \centering    
@@ -71,20 +71,34 @@ Notice how the section title in the index has been replaced by an alternative. N
 \label{fig:placeholder}
 \end{figure}
 
-% Uncomment this line, when you have siunitx package loaded.
-%The SI Units for dynamic viscosity is \si{\newton\second\per\metre\squared}.
-
 % Flush floats and provide a new page
 \clearpage
 
 % This section will not be listed in the table of contents
 \tochide\section{Hidden section}
-\textbf{Lorem ipsum dolor sit amet}, \textit{consectetur adipiscing elit}. In magna nisi, aliquam id blandit id, congue ac est. Fusce porta consequat leo. Proin feugiat at felis vel consectetur. Ut tempus ipsum sit amet congue posuere. Nulla varius rutrum quam. Donec sed purus luctus, faucibus velit id, ultrices sapien. Cras diam purus, tincidunt eget tristique ut, egestas quis nulla. Curabitur vel iaculis lectus. Nunc nulla urna, ultrices et eleifend in, accumsan ut erat. In ut ante leo. Aenean a lacinia nisl, sit amet ullamcorper dolor. Maecenas blandit, tortor ut scelerisque congue, velit diam volutpat metus, sed vestibulum eros justo ut nulla. Etiam nec ipsum non enim luctus porta in in massa. Cras arcu urna, malesuada ut tellus ut, pellentesque mollis risus.Morbi vel tortor imperdiet arcu auctor mattis sit amet eu nisi. Nulla gravida urna vel nisl egestas varius. Aliquam posuere ante quis malesuada dignissim. Mauris ultrices tristique eros, a dignissim nisl iaculis nec. Praesent dapibus tincidunt mauris nec tempor. Curabitur et consequat nisi. Quisque viverra egestas risus, ut sodales enim blandit at. Mauris quis odio nulla. Cras euismod turpis magna, in facilisis diam congue non. Mauris faucibus nisl a orci dictum, et tempus mi cursus.
 
-Etiam elementum tristique lacus, sit amet eleifend nibh eleifend sed \footnote{My footnote goes blah blah blah! \dots}. Maecenas dapibu augue ut urna malesuada, non tempor nibh mollis. Donec sed sem sollicitudin, convallis velit aliquam, tincidunt diam. In eu venenatis lorem. Aliquam non augue porttitor tellus faucibus porta et nec ante. Proin sodales, libero vitae commodo sodales, dolor nisi cursus magna, non tincidunt ipsum nibh eget purus. Nam rutrum tincidunt arcu, tincidunt vulputate mi sagittis id. Proin et nisi nec orci tincidunt auctor et porta elit. Praesent eu dolor ac magna cursus euismod. Integer non dictum nunc.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In magna nisi, aliquam id blandit id, congue ac est. Fusce porta consequat leo. Proin feugiat at felis vel consectetur. Ut tempus ipsum sit amet congue posuere. Nulla varius rutrum quam. Donec sed purus luctus, faucibus velit id, ultrices sapien. Cras diam purus, tincidunt eget tristique ut, egestas quis nulla. Curabitur vel iaculis lectus. Nunc nulla urna, ultrices et eleifend in, accumsan ut erat. In ut ante leo. Aenean a lacinia nisl, sit amet ullamcorper dolor. Maecenas blandit, tortor ut scelerisque congue, velit diam volutpat metus, sed vestibulum eros justo ut nulla. Etiam nec ipsum non enim luctus porta in in massa. Cras arcu urna, malesuada ut tellus ut, pellentesque mollis risus.Morbi vel tortor imperdiet arcu auctor mattis sit amet eu nisi. Nulla gravida urna vel nisl egestas varius. Aliquam posuere ante quis malesuada dignissim. Mauris ultrices tristique eros, a dignissim nisl iaculis nec. Praesent dapibus tincidunt mauris nec tempor. Curabitur et consequat nisi. Quisque viverra egestas risus, ut sodales enim blandit at. Mauris quis odio nulla. Cras euismod turpis magna, in facilisis diam congue non. Mauris faucibus nisl a orci dictum, et tempus mi cursus.
 
+\section{Hello World}
+
+Let us start with \textbf{some bold font} and then \textit{some forced italic} and contrast that with \emph{emphasise} (which may not be italic in some \LaTeX{} packages). Why not include a footnote that appears at the bottom of the page\footnote{My footnote goes blah blah blah! \dots}. How about a program listing using \emph{verbatim}.
+
+\begin{verbatim} 
+#include <stdio.h>
+
+main( )
+{
+    printf("hello, world\n");
+}
+\end{verbatim}
+
+% Uncomment this line, when you have siunitx package loaded.
+%The SI Units for dynamic viscosity is \si{\newton\second\per\metre\squared}.
+
+%Now switch to landscape and add three images
 \begin{landscape}
 
+% Notice how a section format can be applied but the asterisk is used to not list it in the contents
 \section*{Subplots}
 I can cite Bicycle for our Minds (see Fig.~\ref{fig:Bicycle-for-our-Minds}) and others, e.g. a Placeholder graphic (Fig.~\ref{fig:aPlaceholder}) or I can cite the whole figure as Fig.~\ref{fig:myGraphics}
 
