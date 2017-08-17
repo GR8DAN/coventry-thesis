@@ -1,23 +1,25 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                            %%
-%% Class ''PhD Thesis PSnPDF''                                                %%
+%% Class ''CU PhD Thesis''                                                    %%
 %%                                                                            %%
-%% A PhD thesis LaTeX template for Coventry University                        %%
+%% For the PhD thesis LaTeX template for Coventry University                  %%
 %%                                                                            %%
-%% Version: v2.3.1                                                             %%
+%% Version: v1.0.0                                                            %%
+%% By: Daniel S. Fowler                                                       %%
+%% GitHub: https://github.com/GR8DAN/coventry-thesis                          %%
+%% From: PhDThesisPSnPDF v2.3.1                                               %% 
 %% Authors: Krishna Kumar                                                     %%
 %% License: MIT License (c) 2016 Krishna Kumar                                %%
-%% GitHub Repo: https://github.com/kks32/phd-thesis-template/                 %%
+%% GitHub: https://github.com/kks32/phd-thesis-template/                      %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ************************** Class Identification ******************************
-\newcommand\fileversion{2.3.1}
-\newcommand\filedate{2016/04/23}
+\newcommand\fileversion{1.0.0}
+\newcommand\filedate{2017/08/17}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{Classes/PhDThesisPSnPDF}[\filedate\space A PhD thesis class file
- by Krishna Kumar (v\fileversion)]
-\typeout{https://github.com/kks32/phd-thesis-template/}
-
+\ProvidesClass{Classes/CUPhDThesis}[\filedate\space The CU PhD thesis template class file
+ by Daniel S. Fowler based on work by Krishna Kumar (v\fileversion)]
+\typeout{https://github.com/GR8DAN/coventry-thesis}
 
 % ******************************************************************************
 % **************************** Class Definition ********************************
@@ -37,8 +39,8 @@
 \newif\ifPHD@times\PHD@timesfalse             % Times with Math Support
 \DeclareOption{times}{
   \ifsetFont
-    \ClassWarning{PhDThesisPSnPDF}{Font selection conflict: A font package was
-      aleady specified. Please check the document class options in case you 
+    \ClassWarning{CUPhDThesis}{Font selection conflict: A font package was
+      already specified. Please check the document class options in case you 
       have defined two fonts.}
   \else
     \PHD@timestrue
@@ -49,8 +51,8 @@
 \newif\ifPHD@fourier\PHD@fourierfalse         % Fourier with Math Support
 \DeclareOption{fourier}{
   \ifsetFont
-    \ClassWarning{PhDThesisPSnPDF}{Font selection conflict: A font package was
-      aleady specified. Please check the document class options in case you 
+    \ClassWarning{CUPhDThesis}{Font selection conflict: A font package was
+      already specified. Please check the document class options in case you 
       have defined two fonts.}
   \else
     \PHD@fouriertrue
@@ -61,8 +63,8 @@
 \newif\ifsetCustomFont\setCustomFontfalse     % Custom Font with Math Support
 \DeclareOption{customfont}{
   \ifsetFont
-    \ClassWarning{PhDThesisPSnPDF}{Font selection conflict: A font package was
-      aleady specified. Please check the document class options in case you 
+    \ClassWarning{CUPhDThesis}{Font selection conflict: A font package was
+      already specified. Please check the document class options in case you 
       have defined two fonts.}
   \else
     \setCustomFonttrue
@@ -77,7 +79,7 @@
 \newif\ifPHD@biblatex\PHD@biblatexfalse       % BiBLaTeX
 \DeclareOption{biblatex}{
   \ifsetBib
-    \ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
+    \ClassWarning{CUPhDThesis}{Bibliography selection conflict: A
       bibliography style aleady specified. Please check the document class
       options in case you have defined two bibliography styles.}
   \else
@@ -88,7 +90,7 @@
 \newif\ifPHD@authoryear\PHD@authoryearfalse   % Author-Year citation
 \DeclareOption{authoryear}{
   \ifsetBib
-    \ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
+    \ClassWarning{CUPhDThesis}{Bibliography selection conflict: A
       bibliography style aleady specified. Please check the document class
       options in case you have defined two bibliography styles.}
   \else
@@ -100,7 +102,7 @@
 \newif\ifPHD@numbered\PHD@numberedfalse       % Numbered citiation
 \DeclareOption{numbered}{
   \ifsetBib
-    \ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
+    \ClassWarning{CUPhDThesis}{Bibliography selection conflict: A
       bibliography style aleady specified. Please check the document class
       options in case you have defined two bibliography styles.}
   \else
@@ -112,12 +114,12 @@
 \newif\ifuseCustomBib\useCustomBibfalse     % Custom Bibliography
 \DeclareOption{custombib}{
   \ifsetBib
-    \ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
+    \ClassWarning{CUPhDThesis}{Bibliography selection conflict: A
       bibliography style aleady specified. Please check the document class
       options in case you have defined two bibliography styles.}
   \else
     \ifPHD@biblatex
-        \ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
+        \ClassWarning{CUPhDThesis}{Bibliography selection conflict: A
           bibliography style aleady specified. Please check the document class
           options in case you have defined two bibliography styles.}
     \else
@@ -150,7 +152,7 @@
 \newif\ifPHD@abstract\PHD@abstractfalse % Enable Separate Abstract
 \DeclareOption{abstract}{
   \PHD@abstracttrue
-  \ClassWarning{PhDThesisPSnPDF}{You have chosen an option that generates only
+  \ClassWarning{CUPhDThesis}{You have chosen an option that generates only
     the Title page and an abstract with PhD title and author name, if this was
     intentional, ignore this warning. Congratulations on submitting your thesis!
     If not, please remove the option 'abstract' from the document class and
@@ -164,16 +166,20 @@
 \newif\ifPHD@chapter\PHD@chapterfalse % Enable Separate Abstract
 \DeclareOption{chapter}{
   \PHD@chaptertrue
-  \ClassWarning{PhDThesisPSnPDF}{You have chosen an option that generates only 
+  \ClassWarning{CUPhDThesis}{You have chosen an option that generates only 
     selected chapters with references, if this was intentional, ignore this
     warning. If not, please remove the option 'chapter' from the document class
     and recompile. Good luck with your writing!}
 }
 
+% ******************* Final or first submission ********************************
+\newif\if@finalsub\@finalsubfalse
+\DeclareOption{finalsub}{\@finalsubtrue}
+
 % *************************** Pre-defined Options ******************************
 % Font Size
 \DeclareOption{10pt}{
-  \ClassWarning{PhDThesisPSnPDF}{The Coventry University PhD thesis guidelines
+  \ClassWarning{CUPhDThesis}{The Coventry University PhD thesis guidelines
 recommend using a minimum font size of 10pt.}
   \PassOptionsToClass{10pt}{book}%
 }
@@ -185,10 +191,10 @@ recommend using a minimum font size of 10pt.}
 
 \DeclareOption{a4paper}{\renewcommand\PHD@papersize{a4paper}}
 \DeclareOption{a5paper}{
-  \ClassWarning{PhDThesisPSnPDF}{Coventry University Academic Regulations for Higher Degrees requires use of A4 paper}
+  \ClassWarning{CUPhDThesis}{Coventry University Academic Regulations for Higher Degrees requires use of A4 paper}
   \renewcommand\PHD@papersize{a5paper}}
 \DeclareOption{letterpaper}{
-  \ClassWarning{PhDThesisPSnPDF}{Coventry University Academic Regulations for Higher Degrees requires use of A4 paper}
+  \ClassWarning{CUPhDThesis}{Coventry University Academic Regulations for Higher Degrees requires use of A4 paper}
   \renewcommand\PHD@papersize{letterpaper}
 }
 
@@ -205,14 +211,14 @@ recommend using a minimum font size of 10pt.}
 % Draft Mode
 \DeclareOption{draftclassic}{\PassOptionsToClass{draft}{book}
   \setDraftClassictrue
-  \ClassWarning{PhDThesisPSnPDF}{Draft is ON. Don't forget to turn it
+  \ClassWarning{CUPhDThesis}{Draft is ON. Don't forget to turn it
     off in your final version. This is the classic version of draft.
     Use 'draft' for enhanced mode, which adds watermark with timestamp, 
     line numbering, and version number.}}%
 
 \DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{book}
   \setDrafttrue 
-  \ClassWarning{PhDThesisPSnPDF}{Draft is ON. Don't forget to turn it
+  \ClassWarning{CUPhDThesis}{Draft is ON. Don't forget to turn it
     off in your final version. This enhanced 'draft' mode adds watermark 
     with timestamp, line numbering, and version number. Use 'draftclassic'
     if you prefer the \cite{} lassic draft mode. To tweak options see
@@ -227,7 +233,7 @@ recommend using a minimum font size of 10pt.}
 
 % Generates Warning for unknown options
 \DeclareOption*{
-  \ClassWarning{PhDThesisPSnPDF}{Unknown or non-standard option
+  \ClassWarning{CUPhDThesis}{Unknown or non-standard option
 '\CurrentOption'. I'll see if I can load it from the book class. If you get a
 warning unused global option(s): '\CurrentOption' then the option is not
 supported!}
@@ -441,19 +447,19 @@ supported!}
 % If NOT Draft
 \else 
 
-\renewcommand\SetDraftText[1]{\ClassWarning{PhDThesisPSnPDF}{Draft is
+\renewcommand\SetDraftText[1]{\ClassWarning{CUPhDThesis}{Draft is
     inactive, to use SetDraftText include 'draft' in the document 
     class options.}}
 % Draft Version
-\renewcommand\SetDraftVersion[1]{\ClassWarning{PhDThesisPSnPDF}{Draft is
+\renewcommand\SetDraftVersion[1]{\ClassWarning{CUPhDThesis}{Draft is
     inactive, to use SetDraftVersion include 'draft' in the document
     class options.}}
 % Draft Content
-\renewcommand\SetDraftWMPosition[1]{\ClassWarning{PhDThesisPSnPDF}{Draft
+\renewcommand\SetDraftWMPosition[1]{\ClassWarning{CUPhDThesis}{Draft
     is inactive, to use SetDraftWMPosition include 'draft' in the document
     class options.}}
 
-\renewcommand\SetDraftGrayScale[1]{\ClassWarning{PhDThesisPSnPDF}{Draft is
+\renewcommand\SetDraftGrayScale[1]{\ClassWarning{CUPhDThesis}{Draft is
     inactive, to use SetDraftWMPosition include 'draft' in the document
     class options.}}
 \fi
@@ -483,7 +489,7 @@ supported!}
        \AtBeginDocument{
           \@ifpackageloaded{natbib}{}{
             \@ifpackageloaded{biblatex}{}{
-              \ClassWarning{PhDThesisPSnPDF}{%
+              \ClassWarning{CUPhDThesis}{%
                 You chose custom bibliography, but no corresponding package 
                 (biblatex/natbib) has been loaded. Please load the
                 appropriate bibliography package in the preamble.}
@@ -505,7 +511,7 @@ supported!}
 
 \ifsetBib
 \else
-\ClassWarning{PhDThesisPSnPDF}{No bibliography style was specified.
+\ClassWarning{CUPhDThesis}{No bibliography style was specified.
   Default numbered style is used. If you would like to use a 
   different style, use 'authoryear' or 'numbered' in the options in
   documentclass or use 'custombib' and define the natbib package or
@@ -521,19 +527,19 @@ supported!}
     \RequirePackage{mathptmx}  % times roman, including math (where possible)
   \fi
   \setFonttrue
-  \message{PhDThesisPSnPDF: Using Times Roman font}
+  \message{CUPhDThesis: Using Times Roman font}
 \else
   \ifPHD@fourier
     \RequirePackage{fourier} % Fourier
     \setFonttrue
-    \message{PhDThesisPSnPDF: Using Fourier font}
+    \message{CUPhDThesis: Using Fourier font}
   \else
     \ifsetCustomFont
       \setFonttrue
-      \message{PhDThesisPSnPDF: Using custom font}
+      \message{CUPhDThesis: Using custom font}
     \else
       \setFontfalse
-      \message{PhDThesisPSnPDF: No font is set}
+      \message{CUPhDThesis: No font is set}
     \fi % custom font
   \fi % Fourier font
 \fi % Times font
@@ -541,7 +547,7 @@ supported!}
 % If Font is not set throw a warning.
 \ifsetFont
 \else
-  \ClassWarning{PhDThesisPSnPDF}{Using the default font. (The Coventry 
+  \ClassWarning{CUPhDThesis}{Using the default font. (The Coventry 
 	University PhD thesis guidelines recommends any clear and readable
 	font is acceptable, i.e. Arial or Times New Roman)}
   \RequirePackage{tgbonum}
@@ -702,7 +708,7 @@ supported!}
 % ******************************** Justification *******************************
 % Left aligned as per University identity guidelines
 \ifPHD@textJustify
-\message{PhDThesisPSnPDF: The University identity guidelines recommend using 
+\message{CUPhDThesis: The University identity guidelines recommend using 
 left aligned text. Please use 'flushleft' in the documentclass option, if you
 wish to left align your text}
 \else
@@ -788,7 +794,7 @@ wish to left align your text}
 % If Margin has been set (default margin print/online version)
 \ifsetCustomMargin
 \AtBeginDocument{
-\@ifpackageloaded{geometry}{}{\ClassWarning{PhDThesisPSnPDF}{%
+\@ifpackageloaded{geometry}{}{\ClassWarning{CUPhDThesis}{%
   Custom margin is chosen, but geometry package is not loaded. Please load the
   'geometry' package in the preamble.}}}
 \else
@@ -833,7 +839,7 @@ wish to left align your text}
 \newcommand{\@university}{}
 \newcommand{\university}[1]{\renewcommand{\@university}{#1}}
 
-% Defining the crest
+% Defining the crest (logo)
 \newcommand{\@crest}{}
 \newcommand{\crest}[1]{\renewcommand{\@crest}{#1}}
 
@@ -908,40 +914,54 @@ wish to left align your text}
 \begin{singlespace}
 \begin{center}
 
-% University Logo
-{\usebox{\PHD@crest}}
-\vspace{.15\PHD@titlepagespacing}
-
 % Title
 {\usebox{\PHD@Title}} % subtitle is defined
+\vspace{.4\PHD@titlepagespacing}
 
 % Author
 {\usebox{\PHD@author}}
-\vspace*{1em}
+\vspace{.05\PHD@titlepagespacing}
+
+% Degree title on first submission)
+\if@finalsub
+\else
+  {\usebox{\PHD@award}}
+  \vspace{.15\PHD@titlepagespacing}
+\fi
 
 % Supervisor
 \ifPHD@supervisor%
 {\usebox{\PHD@supervisor}}
-\vspace*{0.5em}
+\vspace{.05\PHD@titlepagespacing}
 \fi
 
 % Advisor
 \ifPHD@advisor%
 {\usebox{\PHD@advisor}}
-\vspace*{0.5em}
+\vspace{.05\PHD@titlepagespacing}
 \fi
+
+% Date
+{\usebox{\PHD@awarddate}}
+\vspace{.15\PHD@titlepagespacing}
+
+% University Logo
+{\usebox{\PHD@crest}}
+\vspace{.025\PHD@titlepagespacing}
 
 % Department and University
 {\usebox{\PHD@dept}}
-\vspace{.2\PHD@titlepagespacing}
+\vspace{.02\PHD@titlepagespacing}
+
+% Optional School or Centre
+{\usebox{\PHD@collegedept}}
 
 % Submission Text
-{\usebox{\PHD@submission}}
-
-% College and degree date
+\if@finalsub
 \vfill
-{\usebox{\PHD@collegedate}}
-    
+{\usebox{\PHD@submission}}
+\fi
+
 \end{center}
 
 \end{singlespace}
@@ -1115,18 +1135,26 @@ wish to left align your text}
   \end{minipage}
 \end{lrbox}
 
-% University Crest Box
-\newsavebox{\PHD@crest}
-\begin{lrbox}{\PHD@crest}
-  {\@crest \par}
-\end{lrbox}
-
 % Author Box
 \newsavebox{\PHD@author}
 \begin{lrbox}{\PHD@author}
   \begin{minipage}[c]{\textwidth}
+    \centering \Large {by} \par
+        \vspace{0.5em}
     \centering \Large \bfseries{\@author}
-      \vspace{0.5em}   
+        \vspace{0.5em}
+  \end{minipage}
+\end{lrbox}
+
+% Award Box
+\newsavebox{\PHD@award}
+\begin{lrbox}{\PHD@award}
+  \begin{minipage}[c]{\textwidth}
+  \ifthenelse{\equal{\@degreetitle}{}}{
+      % degree type not defined
+  }{
+    \centering \large \bfseries{\@degreetitle}
+  } %degree defined
   \end{minipage}
 \end{lrbox}
 
@@ -1166,12 +1194,44 @@ wish to left align your text}
   \end{minipage}
 \end{lrbox}
 
+% University Crest Box
+\newsavebox{\PHD@crest}
+\begin{lrbox}{\PHD@crest}
+  {\@crest}
+\end{lrbox}
+
+% Date Box
+\newsavebox{\PHD@awarddate}
+\begin{lrbox}{\PHD@awarddate}
+\begin{minipage}[c]{\textwidth}
+  \large
+  \begin{center}
+    \@degreedate
+  \end{center}
+\end{minipage}
+\end{lrbox}
+
 % Department Box
 \newsavebox{\PHD@dept}
 \begin{lrbox}{\PHD@dept}
   \begin{minipage}[c]{\textwidth}
-    \centering {\large \@dept \par}
-	       {\large \@university \par}
+  \ifthenelse{\equal{\@dept}{}}{
+      % dept is not defined
+  }{
+    \centering {\large \@dept}
+  } %dept defined
+  \end{minipage}
+\end{lrbox}
+
+% College/Centre/School
+\newsavebox{\PHD@collegedept}
+\begin{lrbox}{\PHD@collegedept}
+\begin{minipage}[c]{\textwidth}
+\ifthenelse{\equal{\@college}{}}{
+      % school or centre is not defined
+  }{
+    \centering {\large \@college}
+  } %college defined
   \end{minipage}
 \end{lrbox}
 
@@ -1180,45 +1240,23 @@ wish to left align your text}
 \begin{lrbox}{\PHD@submission}
   \begin{minipage}[c]{\textwidth}
     \begin{center}
-      \large \submissiontext \par
-      \large \textit {\@degreetitle} \par
+        \textbf{\textit{\submissiontext { }\@degreetitle}}
     \end{center}
   \end{minipage}
-\end{lrbox}
-
-% College and Date Box
-\newsavebox{\PHD@collegedate}
-\begin{lrbox}{\PHD@collegedate}
-\begin{minipage}[c]{\textwidth}
-  \large
-  \ifthenelse{\equal{\@college}{}}{
-    % college is not defined
-    \begin{center}
-      \@degreedate
-    \end{center}
-  }{
-    % college is defined
-    \begin{minipage}[b]{0.49\textwidth}
-      \flushleft\@college
-    \end{minipage}
-    \begin{minipage}[b]{0.49\textwidth}
-      \flushright \@degreedate
-    \end{minipage}
-  } % college is defined
-\end{minipage}
 \end{lrbox}
 
 %  Now to compute the free vertical space
 \newlength{\PHD@titlepagespacing}
 \setlength{\PHD@titlepagespacing}{ \textheight %
 			- \totalheightof{\usebox{\PHD@Title}}
-			- \totalheightof{\usebox{\PHD@crest}}
 			- \totalheightof{\usebox{\PHD@author}}
-                   	- \totalheightof{\usebox{\PHD@supervisor}}
-                   	- \totalheightof{\usebox{\PHD@advisor}}
+            - \totalheightof{\usebox{\PHD@supervisor}}
+            - \totalheightof{\usebox{\PHD@advisor}}
+			- \totalheightof{\usebox{\PHD@award}}
+			- \totalheightof{\usebox{\PHD@awarddate}}
+			- \totalheightof{\usebox{\PHD@crest}}
 			- \totalheightof{\usebox{\PHD@dept}}
+			- \totalheightof{\usebox{\PHD@collegedept}}
 			- \totalheightof{\usebox{\PHD@submission}}
-			- \totalheightof{\usebox{\PHD@collegedate}}
 }
 }
-

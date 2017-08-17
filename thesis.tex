@@ -1,7 +1,7 @@
 % ******************************* PhD Thesis Template **************************
 % Please have a look at the README.md file for an overview introduction
 
-\documentclass[a4paper,12pt,times,numbered,print,index]{Classes/PhDThesisPSnPDF}
+\documentclass[a4paper,12pt,times,numbered,print,index]{Classes/CUPhDThesis}
 
 % ******************************************************************************
 % ******************************* Class Options ********************************
@@ -11,7 +11,7 @@
 % requires a page size of A4, which is the default option). Other sizes can be
 % specified, for example 'a5paper'.
 %
-% '12pt' (default) : Other font sizes can be specified, for example 11pt. The
+% '12pt' is default, other font sizes can be specified, for example 10pt. The
 % 'Thesis Requirments.pdf' document states that a font size less that 10pt must
 % not be used for the main text.
 %
@@ -76,6 +76,10 @@
 
 % Uncomment to change page style
 %\pagestyle{PageStyleII}
+%
+% **************************** First or Final Submission ***********************
+%
+% 'finalsub' : Switch from first submission to final submission
 
 % ********************************** Preamble **********************************
 % Preamble: Contains packages and user-defined commands and settings
@@ -112,7 +116,7 @@
 \maketitle
 
 % ** Ethics certificate - must be replaced with the actual certificate
-\includepdf[pages=-]{Ethics/ethics-certificate.pdf}
+\includepdf[pages=-]{Forms/ethics-certificate.pdf}
 
 \include{Dedication/dedication}
 \include{Declaration/declaration}
