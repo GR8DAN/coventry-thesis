@@ -27,7 +27,7 @@ Ut ultrices lectus sed sagittis varius. Nulla facilisi. Nullam tortor sem, place
 
 How do you put a list in a \LaTeX{} document? Use \emph{enumerate}, \emph{itemize}, or \emph{description}.
 
-\section*{Enumeration}
+\subsection*{Enumeration}
 \begin{enumerate}
 \item The first topic is dull
 \item The second topic is duller
@@ -38,7 +38,7 @@ How do you put a list in a \LaTeX{} document? Use \emph{enumerate}, \emph{itemiz
 \item The third topic is the dullest
 \end{enumerate}
 
-\section*{Itemize}
+\subsection*{Itemize}
 \begin{itemize}
 \item The first topic is dull
 \item The second topic is duller
@@ -49,7 +49,7 @@ How do you put a list in a \LaTeX{} document? Use \emph{enumerate}, \emph{itemiz
 \item The third topic is the dullest
 \end{itemize}
 
-\section*{Description}
+\subsection*{Description}
 \begin{description}
 \item[The first topic] is dull
 \item[The second topic] is duller
@@ -59,6 +59,39 @@ How do you put a list in a \LaTeX{} document? Use \emph{enumerate}, \emph{itemiz
 \end{description}
 \item[The third topic] is the dullest
 \end{description}
+
+\subsection*{Advanced Enumeration}
+
+The \LaTeX{} package \textbf{enumitem} must be left uncommented in the \textbf{preamble.tex} for these lists to display correctly. Firstly different alphas for first ordering list items and space between items removed.
+
+\begin{enumerate}[label=\emph{\alph*}), noitemsep]
+\item The first topic is dull
+\item The second topic is duller
+\begin{enumerate}[noitemsep]
+\item The first subtopic is silly
+\item The second subtopic is stupid
+\end{enumerate}
+\item The third topic is the dullest
+\end{enumerate}
+
+And now a legal list.
+
+\subsubsection{Legal Numbering}
+
+\newlist{legal}{enumerate}{10}
+\setlist[legal]{label*=\arabic*.}
+
+\begin{legal}
+\item The first topic is dull
+\item The second topic is duller
+\begin{legal}
+\item The first subtopic is silly
+\item The second subtopic is stupid
+\end{legal}
+\item The third topic is the dullest
+\end{legal}
+
+For other options to change the formatting of lists see the documentation on the \textbf{enumitem} package on CTAN.
 
 \section[Short title]{Reasonably long section title}
 

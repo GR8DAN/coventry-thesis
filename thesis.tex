@@ -115,11 +115,23 @@
 
 \maketitle
 
-% ** Ethics certificate - must be replaced with the actual certificate
+% Title page submission forms vary on first submission.
+% See the Doctoral College section on the student portal
+% for the word documents to create the final forms.
+% Ethics certificate must be replaced with the actual certificate
+% from the CU Ethics portal .
+\ifdefinefinalsub
+\includepdf[pages=-]{Forms/library-and-deposit-form.pdf}
+\fi
+
 \includepdf[pages=-]{Forms/ethics-certificate.pdf}
 
+\ifdefinefinalsub
+\else
+\includepdf[pages=-]{Forms/submission-declaration.pdf}
+\fi
+
 \include{Dedication/dedication}
-\include{Declaration/declaration}
 \include{Acknowledgement/acknowledgement}
 \include{Abstract/abstract}
 

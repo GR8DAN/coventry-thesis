@@ -4,7 +4,7 @@
 %%                                                                            %%
 %% For the PhD thesis LaTeX template for Coventry University                  %%
 %%                                                                            %%
-%% Version: v1.0.0                                                            %%
+%% Version: v1.0.1                                                            %%
 %% By: Daniel S. Fowler                                                       %%
 %% GitHub: https://github.com/GR8DAN/coventry-thesis                          %%
 %% From: PhDThesisPSnPDF v2.3.1                                               %% 
@@ -14,8 +14,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ************************** Class Identification ******************************
-\newcommand\fileversion{1.0.0}
-\newcommand\filedate{2017/08/17}
+\newcommand\fileversion{1.0.1}
+\newcommand\filedate{2017/08/21}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{Classes/CUPhDThesis}[\filedate\space The CU PhD thesis template class file
  by Daniel S. Fowler based on work by Krishna Kumar (v\fileversion)]
@@ -173,8 +173,11 @@
 }
 
 % ******************* Final or first submission ********************************
-\newif\if@finalsub\@finalsubfalse
-\DeclareOption{finalsub}{\@finalsubtrue}
+\newif\ifdefinefinalsub\definefinalsubfalse
+\newif\if@finalsub\@finalsubfalse 
+\DeclareOption{finalsub}{\@finalsubtrue \definefinalsubtrue
+    \ClassWarning{CUPhDThesis}{Final submission declared}
+}
 
 % *************************** Pre-defined Options ******************************
 % Font Size

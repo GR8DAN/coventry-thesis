@@ -7,7 +7,7 @@ Ideas, suggestions and changes welcome.
 ## Coventry University Engineering PhD Thesis Template
 
 * A LaTeX / XeLaTeX / LuaLaTeX thesis template for a Coventry University PhD.
-* Version 2017-08-16.
+* Version 2017-11-07.
 * [MIT License](https://opensource.org/licenses/MIT "View MIT License Online").
 
 ## Author(s)
