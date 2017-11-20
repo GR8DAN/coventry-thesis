@@ -3,7 +3,7 @@
 %****************************** Third Chapter *********************************
 %*******************************************************************************
 
-\chapter{My third chapter}
+\chapter{Examples of text}
 
 \ifpdf
     \graphicspath{{Chapter3/Figs/Raster/}{Chapter3/Figs/PDF/}{Chapter3/Figs/}}
@@ -21,9 +21,17 @@ Nunc et dolor diam. Phasellus eu justo vitae diam vehicula tristique. Vestibulum
 
 Morbi bibendum est aliquam, hendrerit dolor ac, pretium sem. Nunc molestie, dui in euismod finibus, nunc enim viverra enim, eu mattis mi metus id libero. Cras sed accumsan justo, ut volutpat ipsum. Nam faucibus auctor molestie. Morbi sit amet eros a justo pretium aliquet. Maecenas tempor risus sit amet tincidunt tincidunt. Curabitur dapibus gravida gravida. Vivamus porta ullamcorper nisi eu molestie. Ut pretium nisl eu facilisis tempor. Nulla rutrum tincidunt justo, id placerat lacus laoreet et. Sed cursus lobortis vehicula. Donec sed tortor et est cursus pellentesque sit amet sed velit. Proin efficitur posuere felis, porta auctor nunc. Etiam non porta risus. Pellentesque lacinia eros at ante iaculis, sed aliquet ipsum volutpat. Suspendisse potenti.
 
-Ut ultrices lectus sed sagittis varius. Nulla facilisi. Nullam tortor sem, placerat nec condimentum eu, tristique eget ex. Nullam pretium tellus ut nibh accumsan elementum. Aliquam posuere gravida tellus, id imperdiet nulla rutrum imperdiet. Nulla pretium ullamcorper quam, non iaculis orci consectetur eget. Curabitur non laoreet nisl. Maecenas lacinia, lorem vel tincidunt cursus, odio lorem aliquet est, gravida auctor arcu urna id enim. Morbi accumsan bibendum ipsum, ut maximus dui placerat vitae. Nullam pretium ac tortor nec venenatis. Nunc non aliquet neque. 
+Ut ultrices lectus sed sagittis varius. Nulla facilisi. Nullam tortor sem, placerat nec condimentum eu, tristique eget ex. Nullam pretium tellus ut nibh accumsan elementum. Aliquam posuere gravida tellus, id imperdiet nulla rutrum imperdiet. Nulla pretium ullamcorper quam, non iaculis orci consectetur eget. Curabitur non laoreet nisl. Maecenas lacinia, lorem vel tincidunt cursus, odio lorem aliquet est, gravida auctor arcu urna id enim. Morbi accumsan bibendum ipsum, ut maximus dui placerat vitae. Nullam pretium ac tortor nec venenatis. Nunc non aliquet neque.
 
-\section{Examples of Lists}
+\section{Some basics}
+
+Let us start with \textbf{some bold font} and then \textit{some forced italic} and contrast that with \emph{emphasise} (which may not be italic in some \LaTeX{} packages). Why not include a footnote that appears at the bottom of the page\footnote{My footnote goes blah blah blah! \dots}.
+
+\section[Short title]{Reasonably long section title}
+
+For this section notice how the section title in the index has been replaced by an alternative.
+
+\section{Examples of lists}
 
 How do you put a list in a \LaTeX{} document? Use \emph{enumerate}, \emph{itemize}, or \emph{description}.
 
@@ -60,7 +68,7 @@ How do you put a list in a \LaTeX{} document? Use \emph{enumerate}, \emph{itemiz
 \item[The third topic] is the dullest
 \end{description}
 
-\subsection*{Advanced Enumeration}
+\subsection*{Advanced enumeration}
 
 The \LaTeX{} package \textbf{enumitem} must be left uncommented in the \textbf{preamble.tex} for these lists to display correctly. Firstly different alphas for first ordering list items and space between items removed.
 
@@ -76,7 +84,7 @@ The \LaTeX{} package \textbf{enumitem} must be left uncommented in the \textbf{p
 
 And now a legal list.
 
-\subsubsection{Legal Numbering}
+\subsubsection{Legal numbering}
 
 \newlist{legal}{enumerate}{10}
 \setlist[legal]{label*=\arabic*.}
@@ -93,9 +101,33 @@ And now a legal list.
 
 For other options to change the formatting of lists see the documentation on the \textbf{enumitem} package on CTAN.
 
-\section[Short title]{Reasonably long section title}
+\section{Equations and a title with math \texorpdfstring{$\sigma$}{[sigma]}} 
 
-Notice how the section title in the index has been replaced by an alternative. Now I'm going to randomly include a picture, Figure~\ref{fig:placeholder}.
+%In-text equation
+The most famous equation in the world (as an in-line equation): $E^2 = (m_0c^2)^2 + (pc)^2$, which is known as the \textbf{energy-mass-momentum} relation. Now for another equation.
+
+%An equation
+\begin{align}
+CIF: \hspace*{5mm}F_0^j(a) = \frac{1}{2\pi \iota} \oint_{\gamma} \frac{F_0^j(z)}{z - a} dz
+\end{align}
+
+%Defining different nomenclature's for the nomenclature list
+\nomenclature[z-cif]{$CIF$}{Cauchy's Integral Formula}                  % first letter Z is for Acronyms 
+\nomenclature[a-F]{$F$}{complex function}                               % first letter A is for Roman symbols
+\nomenclature[g-p]{$\pi$}{ $\simeq 3.14\ldots$}                         % first letter G is for Greek Symbols
+\nomenclature[g-i]{$\iota$}{unit imaginary number $\sqrt{-1}$}          % first letter G is for Greek Symbols
+\nomenclature[g-g]{$\gamma$}{a simply closed curve on a complex plane}  % first letter G is for Greek Symbols
+\nomenclature[x-i]{$\oint_\gamma$}{integration around a curve $\gamma$}	% first letter X is for Other Symbols
+\nomenclature[r-j]{$j$}{superscript index}                              % first letter R is for superscripts
+\nomenclature[s-0]{$0$}{subscript index}                                % first letter S is for subscripts
+
+% Comment out the following, when you don't have siunitx package loaded.
+\section{SI units example}
+The SI Units for dynamic viscosity is \si{\newton\second\per\metre\squared}. The SI Unit for electrical resistance is \si{\ohm}.
+
+\section{An image}
+
+Now I'm going to randomly include a picture, Figure~\ref{fig:placeholder}.
 
 \begin{figure}[htbp!] 
 \centering    
@@ -107,14 +139,9 @@ Notice how the section title in the index has been replaced by an alternative. N
 % Flush floats and provide a new page
 \clearpage
 
-% This section will not be listed in the table of contents
-\tochide\section{Hidden section}
+\section{Source code or text file listing}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In magna nisi, aliquam id blandit id, congue ac est. Fusce porta consequat leo. Proin feugiat at felis vel consectetur. Ut tempus ipsum sit amet congue posuere. Nulla varius rutrum quam. Donec sed purus luctus, faucibus velit id, ultrices sapien. Cras diam purus, tincidunt eget tristique ut, egestas quis nulla. Curabitur vel iaculis lectus. Nunc nulla urna, ultrices et eleifend in, accumsan ut erat. In ut ante leo. Aenean a lacinia nisl, sit amet ullamcorper dolor. Maecenas blandit, tortor ut scelerisque congue, velit diam volutpat metus, sed vestibulum eros justo ut nulla. Etiam nec ipsum non enim luctus porta in in massa. Cras arcu urna, malesuada ut tellus ut, pellentesque mollis risus.Morbi vel tortor imperdiet arcu auctor mattis sit amet eu nisi. Nulla gravida urna vel nisl egestas varius. Aliquam posuere ante quis malesuada dignissim. Mauris ultrices tristique eros, a dignissim nisl iaculis nec. Praesent dapibus tincidunt mauris nec tempor. Curabitur et consequat nisi. Quisque viverra egestas risus, ut sodales enim blandit at. Mauris quis odio nulla. Cras euismod turpis magna, in facilisis diam congue non. Mauris faucibus nisl a orci dictum, et tempus mi cursus.
-
-\section{Hello World}
-
-Let us start with \textbf{some bold font} and then \textit{some forced italic} and contrast that with \emph{emphasise} (which may not be italic in some \LaTeX{} packages). Why not include a footnote that appears at the bottom of the page\footnote{My footnote goes blah blah blah! \dots}. How about a program listing using \emph{verbatim}.
+How about a program listing using \emph{verbatim}.
 
 \begin{verbatim} 
 #include <stdio.h>
@@ -125,9 +152,49 @@ main( )
 }
 \end{verbatim}
 
-% Comment out the following, when you don't have siunitx package loaded.
-\section{SI Units Example}
-The SI Units for dynamic viscosity is \si{\newton\second\per\metre\squared}. The SI Unit for electrical resistance is \si{\ohm}.
+\subsection{Listings example}
+
+Alternatively the HTML code below uses the \emph{Listings} package, good for source code and other text listings, see the documentation for Listings on CTAN, or \url{http://texdoc.net/texmf-dist/doc/latex/listings/listings.pdf} to learn about Listings.
+
+\begin{lstlisting}[language=HTML,caption={Hello World in HTML},label={lst:helloworld},float=ht]
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Basic Web Page</title>
+    </head>
+    <body>
+Hello World!
+    </body>
+</html>
+\end{lstlisting}
+
+\subsection{Pseudo code example}
+
+What about some pseudo code using the \emph{algorithm2e} package.
+
+\begin{algorithm}[H]
+ \SetAlgoLined
+ \KwData{this text}
+ \KwResult{how to write algorithm with \LaTeX2e }
+ initialization\;
+ \While{not at end of this document}{
+  read current\;
+  \eIf{understand}{
+    go to next section\;
+    current section becomes this one\;
+    }{
+    go back to the beginning of current section\;
+    }
+  }
+\caption{How to write algorithms}
+\end{algorithm}
+
+See \url{http://tug.ctan.org/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf} for details and options.
+
+% This section will not be listed in the table of contents
+\tochide\section{Hidden section}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In magna nisi, aliquam id blandit id, congue ac est. Fusce porta consequat leo. Proin feugiat at felis vel consectetur. Ut tempus ipsum sit amet congue posuere. Nulla varius rutrum quam. Donec sed purus luctus, faucibus velit id, ultrices sapien. Cras diam purus, tincidunt eget tristique ut, egestas quis nulla. Curabitur vel iaculis lectus. Nunc nulla urna, ultrices et eleifend in, accumsan ut erat. In ut ante leo. Aenean a lacinia nisl, sit amet ullamcorper dolor. Maecenas blandit, tortor ut scelerisque congue, velit diam volutpat metus, sed vestibulum eros justo ut nulla. Etiam nec ipsum non enim luctus porta in in massa. Cras arcu urna, malesuada ut tellus ut, pellentesque mollis risus.Morbi vel tortor imperdiet arcu auctor mattis sit amet eu nisi. Nulla gravida urna vel nisl egestas varius. Aliquam posuere ante quis malesuada dignissim. Mauris ultrices tristique eros, a dignissim nisl iaculis nec. Praesent dapibus tincidunt mauris nec tempor. Curabitur et consequat nisi. Quisque viverra egestas risus, ut sodales enim blandit at. Mauris quis odio nulla. Cras euismod turpis magna, in facilisis diam congue non. Mauris faucibus nisl a orci dictum, et tempus mi cursus.
 
 %Now switch to landscape and add three images
 \begin{landscape}
@@ -153,7 +220,7 @@ I can cite Bicycle for our Minds (see Fig.~\ref{fig:Bicycle-for-our-Minds}) and 
     \caption{Placeholder}
     \label{fig:aPlaceholder}
   \end{subfigure}
-  \caption{My Graphics}
+  \caption{My graphics}
   \label{fig:myGraphics}
 \end{figure}
 
