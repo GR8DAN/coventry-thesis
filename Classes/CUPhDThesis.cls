@@ -4,7 +4,7 @@
 %%                                                                            %%
 %% For the PhD thesis LaTeX template for Coventry University                  %%
 %%                                                                            %%
-%% Version: v1.0.1                                                            %%
+%% Version: v1.0.2                                                            %%
 %% By: Daniel S. Fowler                                                       %%
 %% GitHub: https://github.com/GR8DAN/coventry-thesis                          %%
 %% From: PhDThesisPSnPDF v2.3.1                                               %% 
@@ -14,8 +14,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ************************** Class Identification ******************************
-\newcommand\fileversion{1.0.1}
-\newcommand\filedate{2017/08/21}
+\newcommand\fileversion{1.0.2}
+\newcommand\filedate{2018/08/06}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{Classes/CUPhDThesis}[\filedate\space The CU PhD thesis template class file
  by Daniel S. Fowler based on work by Krishna Kumar (v\fileversion)]
@@ -885,6 +885,23 @@ wish to left align your text}
 \newcommand{\@subject}{}
 \newcommand{\subject}[1]{\renewcommand{\@subject}{#1}}
 
+% Declaration title text
+\newcommand{\@declarationtitle}{Declaration}
+
+% Acknowledgment title text
+\newcommand{\@acknowledgementstitle}{Acknowledgements}
+
+% Abstract title text
+\newcommand{\@abstracttitle}{Abstract}
+
+% Names for the nomenclature groups
+\newcommand{\@nomenclatureromans}{Roman Symbols}
+\newcommand{\@nomenclaturegreeks}{Greek Symbols}
+\newcommand{\@nomenclatureacronyms}{Acronyms / Abbreviations}
+\newcommand{\@nomenclaturesuperscripts}{Superscripts}
+\newcommand{\@nomenclaturesubscripts}{Subscripts}
+\newcommand{\@nomenclatureothers}{Other Symbols}
+
 
 % These macros define an environment for front matter that is always
 % single column even in a double-column document.
@@ -992,7 +1009,7 @@ wish to left align your text}
 \newenvironment{declaration}{
 \cleardoublepage
 \setsinglecolumn
-\chapter*{\centering \Large Declaration}
+\chapter*{\centering \Large \@declarationtitle}
 \thispagestyle{empty}
 }{
 \flushright
@@ -1010,7 +1027,7 @@ wish to left align your text}
 \newenvironment{acknowledgements}{
 \cleardoublepage
 \setsinglecolumn
-\chapter*{\centering \Large Acknowledgements}
+\chapter*{\centering \Large \@acknowledgementstitle}
 \thispagestyle{empty}
 }
 
@@ -1020,12 +1037,12 @@ wish to left align your text}
 \RequirePackage[intoc]{nomencl}
 \makenomenclature
 \renewcommand{\nomgroup}[1]{%
-\ifthenelse{\equal{#1}{A}}{\item[\textbf{Roman Symbols}]}{%
-\ifthenelse{\equal{#1}{G}}{\item[\textbf{Greek Symbols}]}{%
-\ifthenelse{\equal{#1}{Z}}{\item[\textbf{Acronyms / Abbreviations}]}{%
-\ifthenelse{\equal{#1}{R}}{\item[\textbf{Superscripts}]}{%
-\ifthenelse{\equal{#1}{S}}{\item[\textbf{Subscripts}]}{%
-\ifthenelse{\equal{#1}{X}}{\item[\textbf{Other Symbols}]}
+\ifthenelse{\equal{#1}{A}}{\item[\textbf{\@nomenclatureromans}]}{% 
+\ifthenelse{\equal{#1}{G}}{\item[\textbf{\@nomenclaturegreeks}]}{%
+\ifthenelse{\equal{#1}{Z}}{\item[\textbf{\@nomenclatureacronyms}]}{%
+\ifthenelse{\equal{#1}{R}}{\item[\textbf{\@nomenclaturesuperscripts}]}{%
+\ifthenelse{\equal{#1}{S}}{\item[\textbf{\@nomenclaturesubscripts}]}{%
+\ifthenelse{\equal{#1}{X}}{\item[\textbf{\@nomenclatureothers}]}
 {}
 }% matches mathematical symbols > X
 }% matches Subscripts           > S
@@ -1111,7 +1128,7 @@ wish to left align your text}
 % Normal abstract in the thesis
   \cleardoublepage
   \setsinglecolumn
-  \chapter*{\centering \Large Abstract}
+  \chapter*{\centering \Large \@abstracttitle}
   \thispagestyle{empty}
 \fi
 }
