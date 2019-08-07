@@ -4,7 +4,7 @@
 %%                                                                            %%
 %% For the PhD thesis LaTeX template for Coventry University                  %%
 %%                                                                            %%
-%% Version: v1.0.1                                                            %%
+%% Version: v1.0.2                                                            %%
 %% By: Daniel S. Fowler                                                       %%
 %% GitHub: https://github.com/GR8DAN/coventry-thesis                          %%
 %% From: PhDThesisPSnPDF v2.3.1                                               %% 
@@ -14,8 +14,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ************************** Class Identification ******************************
-\newcommand\fileversion{1.0.1}
-\newcommand\filedate{2017/08/21}
+\newcommand\fileversion{1.0.2}
+\newcommand\filedate{2019/08/06}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{Classes/CUPhDThesis}[\filedate\space The CU PhD thesis template class file
  by Daniel S. Fowler based on work by Krishna Kumar (v\fileversion)]
@@ -812,7 +812,7 @@ wish to left align your text}
 
 % Author
 {\usebox{\PHD@author}}
-\vspace{.05\PHD@titlepagespacing}
+\vspace{.02\PHD@titlepagespacing}
 
 % Degree title on first submission)
 \if@finalsub
@@ -835,7 +835,7 @@ wish to left align your text}
 
 % Date
 {\usebox{\PHD@awarddate}}
-\vspace{.15\PHD@titlepagespacing}
+\vspace{.05\PHD@titlepagespacing}
 
 % University Logo
 {\usebox{\PHD@crest}}
@@ -843,13 +843,14 @@ wish to left align your text}
 
 % Department and University
 {\usebox{\PHD@dept}}
-\vspace{.02\PHD@titlepagespacing}
+\vspace{.01\PHD@titlepagespacing}
 
 % Optional School or Centre
 {\usebox{\PHD@collegedept}}
 
 % Submission Text
-\if@finalsub
+\ifdefinefinalsub
+\else
 \vfill
 {\usebox{\PHD@submission}}
 \fi
@@ -997,7 +998,7 @@ wish to left align your text}
     {{\large \vspace*{1em} \@author} \par}
   \end{center}
 \else
- %Normal abstract in the thesis
+% Normal abstract in the thesis
   \cleardoublepage
   \setsinglecolumn
   \chapter*{\centering \Large Abstract}
@@ -1031,9 +1032,9 @@ wish to left align your text}
 \newsavebox{\PHD@author}
 \begin{lrbox}{\PHD@author}
   \begin{minipage}[c]{\textwidth}
-    \centering \Large {by} \par
+    \centering \Large \bfseries{by} \par
         \vspace{0.5em}
-    \centering \Large \bfseries{\@author}
+    \centering \LARGE \bfseries{\@author}
         \vspace{0.5em}
   \end{minipage}
 \end{lrbox}
@@ -1045,7 +1046,9 @@ wish to left align your text}
   \ifthenelse{\equal{\@degreetitle}{}}{
       % degree type not defined
   }{
-    \centering \large \bfseries{\@degreetitle}
+    \ifdefinefinalsub
+        \centering \large \bfseries{\@degreetitle}
+    \fi
   } %degree defined
   \end{minipage}
 \end{lrbox}
@@ -1096,9 +1099,9 @@ wish to left align your text}
 \newsavebox{\PHD@awarddate}
 \begin{lrbox}{\PHD@awarddate}
 \begin{minipage}[c]{\textwidth}
-  \large
+  \Large
   \begin{center}
-    \@degreedate
+    \bfseries{\@degreedate}
   \end{center}
 \end{minipage}
 \end{lrbox}
@@ -1132,7 +1135,7 @@ wish to left align your text}
 \begin{lrbox}{\PHD@submission}
   \begin{minipage}[c]{\textwidth}
     \begin{center}
-        \textbf{\textit{\submissiontext { }\@degreetitle}}
+        \large \bfseries{\textit{\submissiontext { }\@degreetitle}}
     \end{center}
   \end{minipage}
 \end{lrbox}
