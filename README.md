@@ -21,3 +21,7 @@ Ideas, suggestions and changes welcome.
 * Replaced the copyrighted example images with public domain clip art from [openclipart.org](https://openclipart.org "openclipart.org")
 * Removed build files not required by ~~ShareLaTeX~~ Overleaf (can be obtained from the CUED template).
 * Added more tutorial text as an introduction to the template, how to use it and pointers to further help, especially for those new to LaTeX.
+
+## Additional Information
+
+There is an article at [Tek Eye UK on the Coventry University Thesis LaTeX Template](https://tekeye.uk/free_resources/thesis-template-in-latex-for-cu-phd "CU PhD Thesis Template article")
