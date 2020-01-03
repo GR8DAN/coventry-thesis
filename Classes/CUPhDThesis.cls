@@ -4,7 +4,7 @@
 %%                                                                            %%
 %% For the PhD thesis LaTeX template for Coventry University                  %%
 %%                                                                            %%
-%% Version: v1.0.2                                                            %%
+%% Version: v1.0.3                                                            %%
 %% By: Daniel S. Fowler                                                       %%
 %% GitHub: https://github.com/GR8DAN/coventry-thesis                          %%
 %% From: PhDThesisPSnPDF v2.3.1                                               %% 
@@ -14,8 +14,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ************************** Class Identification ******************************
-\newcommand\fileversion{1.0.2}
-\newcommand\filedate{2019/08/06}
+\newcommand\fileversion{1.0.3}
+\newcommand\filedate{2020/01/03}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{Classes/CUPhDThesis}[\filedate\space The CU PhD thesis template class file
  by Daniel S. Fowler based on work by Krishna Kumar (v\fileversion)]
