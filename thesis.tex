@@ -71,12 +71,78 @@
 % 'finalsub' : Switch from first submission to final submission
 
 % ********************************** Preamble **********************************
-% Preamble: Contains packages and user-defined commands and settings
+% Preamble: Contains packages, user-defined commands, settings and
+% link to references file for biblatex
 \input{Preamble/preamble}
 
 % ************************ Thesis Information & Meta-data **********************
-% Thesis title and author information, reference file for biblatex
-\input{thesis-info}
+
+%% The title of the thesis and author information
+\title{Writing your PhD thesis in \texorpdfstring{\LaTeX}{LaTeX}}
+%\texorpdfstring is used for PDF metadata. Usage:
+%\texorpdfstring{LaTeX_Version}{PDF Version (non-latex)} eg.,
+%\texorpdfstring{$sigma$}{sigma}
+
+%% Subtitle, if you don't need one comment this out
+\subtitle{Using the CU thesis template}
+
+%% The full name of the author
+\author{Another Proud Author}
+
+%% Department (eg. Faculty of Engineering, Environment and Computing; Coventry Business School; Faculty of Health and Life Sciences; Coventry Law School; Faculty of Arts and Humanities, School or Art and Design)
+%% Comment this out to remove department line
+\dept{Optional Name of Faculty (not normally required)}
+
+%% University and Logo
+\university{Coventry University}
+% Crest (logo)
+\crest{\includegraphics[width=0.35\textwidth]{Coventry_University_logo}}
+
+%% Supervisor (optional)
+%% for multiple supervisors, append each supervisor with the \newline command
+%\supervisor{Prof. A.B. Supervisor\newline
+%Prof. C.D. Supervisor}
+
+%% Supervisor Role (optional) - Supervisor (default) or advisor
+% \supervisorrole{\textbf{Supervisors: }}
+%% if no title is desired:
+% \supervisorrole{}
+
+%% Supervisor line width: required to align supervisors
+%\supervisorlinewidth{0.35\textwidth}
+
+%% Advisor (optional)
+%% for multiple advisers, append each advisor with the \newline command
+%\advisor{Dr. A. Advisor\newline
+%Dr. B. Advisor}
+     
+%% Advisor Role (optional) - Advisor (default) or leave empty
+% \advisorrole{Advisers: }
+%% if no title is required
+% \advisorrole{}
+
+%% Advisor line width: required to align supervisors
+%\advisorlinewidth{0.25\textwidth}
+
+%% Full title of the Degree (Doctor of Philosophy/Master of Philosophy/Master of Research)
+\degreetitle{Doctor of Philosophy}
+
+%% You can redefine the submission text:
+% Default as per the University guidelines:
+% 'A thesis submitted in partial fulfilment of the University's requirements
+% for the Degree of Doctor of Philosophy/Master of Philosophy/Master of Research'
+\renewcommand{\submissiontext}{A thesis submitted in partial fulfilment of the University's requirements 
+for the Degree of}
+
+%% Faculty or School or College affiliation (optional)
+\college{Optional CU Research Centre or School (not normally required)}
+
+%% Submission date
+% Default is set as {\monthname[\the\month]\space\the\year}
+%\degreedate{January 2020} 
+
+%% Meta information
+\subject{LaTeX} \keywords{{LaTeX} {PhD Thesis} {Template} {Coventry University}}
 
 % ***************************** Abstract Separate ******************************
 % To printout only the title page and the abstract with the PhD title and the
@@ -102,20 +168,32 @@
 
 \frontmatter
 
+% Title page 
 \maketitle
 
-% Title page submission forms vary on first submission.
+% Required submission forms vary on first submission.
 % See the Doctoral College section on the student portal
 % for the word documents to create the final forms.
+
 % Ethics certificate must be replaced with the actual certificate
-% from the CU Ethics portal .
+% from the CU Ethics portal.
 \ifdefinefinalsub
+% Library deposit form appears behind title page unless
+% the following line is uncommented to add a blank page
+%\newpage\null\thispagestyle{empty}\newpage
 \includepdf[pages=-]{Forms/library-and-deposit-form.pdf}
 \fi
 
+% You may want to uncomment the following
+% line to start the ethics form on a new page
+%\newpage\null\thispagestyle{empty}\newpage
 \includepdf[pages=-]{Forms/ethics-certificate.pdf}
 
+% You may want to uncomment the following
+% line to start the submission form on a new page
+%\newpage\null\thispagestyle{empty}\newpage
 \ifdefinefinalsub
+\includepdf[pages=-]{Forms/resubmission-form.pdf}
 \else
 \includepdf[pages=-]{Forms/submission-declaration.pdf}
 \fi
@@ -129,6 +207,9 @@
 \tableofcontents
 
 \listoffigures
+% Uncomment the following to add a statement at the end of the list of figures
+%\hfill \break
+%Unless otherwise stated, all diagrams, photographs and figures are the work of the author. Where a diagram has been reinterpreted from its original source, that source is referenced.
 
 \listoftables
 
@@ -161,6 +242,8 @@
 
 % ********************************** Appendices ********************************
 
+%ignore word count in appendices
+%%TC:ignore
 \begin{appendices} % Using appendices environment for more functionality
 
 \include{Appendix1/appendix1}
@@ -168,6 +251,8 @@
 \include{Appendix3/appendix3}
 
 \end{appendices}
+%end of word count ignore
+%%TC:endignore
 
 % *************************************** Index ********************************
 \printthesisindex % If index is present
