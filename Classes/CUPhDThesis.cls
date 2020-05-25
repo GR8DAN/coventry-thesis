@@ -4,7 +4,7 @@
 %%                                                                            %%
 %% For the PhD thesis LaTeX template for Coventry University                  %%
 %%                                                                            %%
-%% Version: v1.0.3                                                            %%
+%% Version: v1.0.4                                                            %%
 %% By: Daniel S. Fowler                                                       %%
 %% GitHub: https://github.com/GR8DAN/coventry-thesis                          %%
 %% From: PhDThesisPSnPDF v2.3.1                                               %% 
@@ -223,7 +223,7 @@ supported!}
 }
 
 % *************************** Graphics and Figures *****************************
-\RequirePackage[usenames, dvipsnames]{color}
+\RequirePackage[usenames, dvipsnames]{xcolor}
 \ifpdf
   % Convert eps figures to pdf
   \RequirePackage{epstopdf}
