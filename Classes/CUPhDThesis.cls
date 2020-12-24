@@ -413,7 +413,7 @@ supported!}
 % ********************************** Fonts **********************************
 % Text companion fonts
 \RequirePackage{textcomp}
-% Use line below for stix mathematical glyphs
+% Use line below for stix mathematical glyphs but comment out amssyb later
 %\RequirePackage[notextcomp]{stix}
 
 % Font Selection
@@ -486,6 +486,7 @@ supported!}
 
   \RequirePackage{amsfonts}
   \RequirePackage{amsmath}
+  % Comment out below line if using stix package
   \RequirePackage{amssymb}
 \fi
 
