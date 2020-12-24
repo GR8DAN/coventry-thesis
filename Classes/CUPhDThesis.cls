@@ -411,7 +411,11 @@ supported!}
 \fi
 
 % ********************************** Fonts **********************************
+% Text companion fonts
 \RequirePackage{textcomp}
+% Use line below for stix mathematical glyphs
+%\RequirePackage[notextcomp]{stix}
+
 % Font Selection
 \ifPHD@times
   \ifxetex
