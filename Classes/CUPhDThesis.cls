@@ -453,20 +453,24 @@ supported!}
 \ifxetex
   % XeLaTeX
   \usepackage{amsmath}
+  \expandafter\let\csname not=\endcsname\relax
+  \expandafter\let\csname not<\endcsname\relax
+  \expandafter\let\csname not>\endcsname\relax
   \usepackage{fontspec}
   \usepackage[]{unicode-math}
+
   \setmainfont[
     Extension = .otf,
-    UprightFont = *-regular,
-    BoldFont = *-bold,
-    ItalicFont = *-italic,
-    BoldItalicFont = *-bolditalic,
-  ]{xits}
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+    ItalicFont = *-Italic,
+    BoldItalicFont = *-BoldItalic,
+  ]{XITS}
   
   \setmathfont[ 
     Extension = .otf,
-    BoldFont = *bold,
-  ]{xits-math}
+    BoldFont = XITSMath-Bold,
+  ]{XITSMath-Regular}
   
 \else
   % default: pdfLaTeX
@@ -574,8 +578,12 @@ supported!}
 \ifpdf
   % PDFLaTeX does it automatically.
 \else
-  % dvips
-  \RequirePackage{breakurl} % to split the url over multiple lines
+  \ifxetex
+    %breakurl doesn't work with XeLaTeX
+  \else
+    % dvips
+    \RequirePackage{breakurl} % to split the url over multiple lines
+  \fi
 \fi
   
 % ******************************************************************************
@@ -650,7 +658,6 @@ wish to left align your text}
   \fancyhead[LE]{\bfseries \nouppercase \leftmark}
   \fancyfoot[C]{\thepage}
 }
-
 
 % Set Fancy Header Command is defined to Load FancyHdr after Geometry is defined
 \newcommand{\setFancyHdr}{
