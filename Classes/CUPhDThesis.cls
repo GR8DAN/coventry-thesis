@@ -494,6 +494,10 @@ supported!}
   \RequirePackage{amssymb}
 \fi
 
+%Uncomment below if you want \hbar (reduced Planke constant) not resemble \hslash
+%(only in math mode)
+%\renewcommand\hbar{\mathit{^^^^0127}}
+
 % Don't break enumeration (etc.) across pages in an ugly manner
 \clubpenalty=10000
 \widowpenalty=10000
