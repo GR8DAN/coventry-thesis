@@ -968,7 +968,7 @@ wish to left align your text}
 % The chapter mode allows user to only print particular chapters with references
 % All other options are disabled by default
 % To include only specific chapters without TOC, LOF, Title and Front Matter
-% To send it to supervisior for changes
+% To send it to supervisor for changes
 
 \ifPHD@chapter
     \defineChaptertrue
