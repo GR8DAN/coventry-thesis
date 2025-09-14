@@ -285,7 +285,7 @@ supported!}
 \renewcommand{\frontmatter}{%
   \cleardoublepage
   \@mainmatterfalse
-  \pagenumbering{arabic}
+  \pagenumbering{roman}
   \nolinenumbers
 }
 \renewcommand{\mainmatter}{%
