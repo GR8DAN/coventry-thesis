@@ -508,7 +508,7 @@ supported!}
 % Moved below other usepackage definitions to fix PDFLaTeX footnote warning
 % Based on the suggestion by John Plaice
 
-\RequirePackage[unicode=true]{hyperref}
+\PassOptionsToPackage{hyphens}{url}\usepackage[unicode=true]{hyperref}
 
 \if@print
   % For Print version
